@@ -1,32 +1,56 @@
-import java.util.Scanner;
 
 public class Q4 {
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int count = 0;
-        int [] seats = new int[10];
-        for (int i = 0; i < 10; i++) {
-            seats[i] = 0;
-        }
-        while(true) {
-            System.out.println("현재 좌석 상태");
-            for(int i = 0; i < seats.length; i++) {
-                System.out.print(i+1 + ":" + seats[i] + " ");
-            }
-            System.out.print("\n예매할 좌석 번호를 입력하세요 (종료하려면 0 입력) :");
-            int seat = sc.nextInt();
+        String[] subjects = new String[]{"국어", "영어", "수학", "컴퓨터", "회화"};
+        int[] scores = new int[]{44, 66, 22, 99, 100};
+        int[] scores2 = scores.clone();
+        scores2[0] = 22;
+        scores2[2] = 88;
+        System.out.print("1학기 성적: [");
 
-            if(seat==0) {
-                System.out.println("예매된 좌석 수: " +count);
-                System.out.println("총 예매 금액: "+count*10000+"원");
-                break;
-            }
-            else {
-                count++;
-                System.out.println(seat+"번 좌석이 예매되었습니다.");
-                seats[seat-1]=1;
+        int count;
+        for(count = 0; count < scores.length; ++count) {
+            System.out.print(scores[count]);
+            if (count != scores.length - 1) {
+                System.out.print(",");
             }
         }
+
+        System.out.println("]");
+        System.out.print("2학기 성적: [");
+
+        for(count = 0; count < scores2.length; ++count) {
+            System.out.print(scores2[count]);
+            if (count != scores.length - 1) {
+                System.out.print(",");
+            }
+        }
+
+        System.out.println("]");
+        count = 0;
+
+        int count2;
+        for(count2 = 0; count2 < scores.length; ++count2) {
+            if (scores[count2] == scores2[count2]) {
+                count++;
+            }
+        }
+
+        System.out.println("1학기와 2학기 성적이 동일한 과목수: " + count + "개");
+        count2 = 0;
+        int index = 0;
+
+        for(int i = 0; i < scores2.length; ++i) {
+            if (scores[i] < scores2[i]) {
+                count2++;
+                index = i;
+            }
+        }
+
+        System.out.println("1학기보다 성적이 오른 과목수: " + count2 + "개");
+        if (count2 > 0) {
+            System.out.println("성적이 오른 과목명: " + subjects[index]);
+        }
+
     }
 }

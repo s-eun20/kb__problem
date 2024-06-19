@@ -1,65 +1,29 @@
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Scanner;
 
 public class Q1 {
+    public Q1() {
+    }
+
     public static void main(String[] args) {
-        int[] a = new int[20];
+        String[] title = new String[]{"Quiet Place", "Avengers: Endgame", "Inception", "Parasite", "Interstellar"};
+        int[] count = new int[]{100, 200, 300, 400, 500};
+        Scanner in = new Scanner(System.in);
+        System.out.println("네이버 시리즈온 실시간 영화 목록:");
 
-        // 배열 초기화 및 최대값 찾기
-        int max = Integer.MIN_VALUE;
-        int maxIndex = -1;
-
-        System.out.print("Original array: [");
-        for (int i = 0; i < a.length; i++) {
-            a[i] = (int) (Math.random() * 100);
-            System.out.print(a[i]);
-            if (i < a.length - 1) {
-                System.out.print(", ");
-            }
-            if (max < a[i]) {
-                max = a[i];
-                maxIndex = i;
-            }
-        }
-        System.out.println("]");
-
-        System.out.println("Maximum value: " + max);
-        System.out.println("Index of maximum value: " + maxIndex);
-
-        // 오름차순 정렬
-        Arrays.sort(a);
-        System.out.print("Array in ascending order: [");
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i]);
-            if (i < a.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-
-        // 내림차순 정렬
-        for (int i = 0; i < a.length / 2; i++) {
-            int temp = a[i];
-            a[i] = a[a.length - 1 - i];
-            a[a.length - 1 - i] = temp;
+        int num;
+        for(num = 0; num < title.length; num++) {
+            System.out.println(num + 1 + ". " + title[num] + " - 조회수: " + count[num]);
         }
 
-        System.out.print("Array in descending order: [");
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i]);
-            if (i < a.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-
-        // 고유값 찾기
-        HashSet<Integer> set = new HashSet<>();
-        for (int j : a) {
-            set.add(j);
+        System.out.println("정보를 확인하고 싶은 영화 번호를 선택하세요(1-5):");
+        num = in.nextInt() - 1;
+        if (num >= 0 && num < title.length) {
+            System.out.println("선택한 영화: " + title[num]);
+            System.out.println("조회수: " + count[num]);
+        } else {
+            System.out.println("잘못된 선택입니다.");
         }
 
-        System.out.println("Unique values: " + set);
-        System.out.println("Count of unique values: " + set.size());
+        in.close();
     }
 }

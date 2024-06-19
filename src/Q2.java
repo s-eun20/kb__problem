@@ -1,68 +1,40 @@
-import java.util.Arrays;
-import java.util.HashSet;
+
+import java.util.Scanner;
 
 public class Q2 {
-
     public static void main(String[] args) {
-        int[] a = new int[10];
-        int[] b = new int[10];
+        int[] type = new int[2];
+        int[] price = new int[2];
 
-        System.out.print("배열1 : [");
-        for (int i = 0; i < 10; i++) {
-            a[i] = (int)(Math.random() * 50) + 1;
-            System.out.print(a[i]);
-            if (i < a.length - 1) {
-                System.out.print(", ");
+        while (true) {
+            System.out.println("주문할 상품을 선택하세요 (1: 샌드위치, 2: 바게트, 0: 주문종료) ");
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 0:
+                    System.out.println("최종 주문 내역:");
+                    System.out.println("샌드위치: " + type[0] + "개");
+                    System.out.println("바게트: " + type[1] + "개");
+                    System.out.println("최종 주문 가격: " + (price[0] + price[1]) + "원");
+                    sc.close();
+                    return;
+                case 1:
+                    System.out.println("선택한 상품: 샌드위치");
+                    System.out.println("주문할 수량을 입력하세요:");
+                    type[0] = sc.nextInt();
+                    price[0] = type[0] * 2000;
+                    break;
+                case 2:
+                    System.out.println("선택한 상품: 바게트");
+                    System.out.println("주문할 수량을 입력하세요:");
+                    type[1] = sc.nextInt();
+                    price[1] = type[1] * 3500;
             }
+
+            System.out.println("현재 주문 상황:");
+            System.out.println("샌드위치: " + type[0] + "개");
+            System.out.println("바게트: " + type[1] + "개");
+            System.out.println("현재까지의 총 주문 금액: " + (price[0] + price[1]));
         }
-        System.out.println("]");
-
-        System.out.print("배열2 : [");
-        for (int i = 0; i < 10; i++) {
-            b[i] = (int)(Math.random() * 50) + 51;
-            System.out.print(b[i]);
-            if (i < b.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-
-        int [] result = new int[a.length+b.length];
-        System.arraycopy(a, 0, result, 0, a.length);
-        System.arraycopy(b, 0, result, a.length, b.length);
-        int max = result[0];
-        int min = result[0];
-        int maxIndex = 0;
-        int minIndex = 0;
-
-        HashSet<Integer> set = new HashSet<>();
-        for (int j : result) {
-            set.add(j);
-        }
-        Arrays.sort(result);
-        System.out.println("중복 값 제거된 배열: "+set);
-        System.out.print("오름차순 정렬된 배열: [");
-        for (int i = 0; i < result.length; i++) {
-            System.out.print(result[i]);
-            if(result[i] > max) {
-                max = result[i];
-                maxIndex = i;
-            }
-            if(result[i] < min) {
-                min = result[i];
-                minIndex = i;
-            }
-            if (i < result.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-        System.out.println("최대값: "+max);
-        System.out.println("최소값: "+min);
-        System.out.println("최대값의 위치: "+maxIndex);
-        System.out.println("최소값의 위치: "+minIndex);
-
     }
-
-
 }
