@@ -29,8 +29,8 @@ public class Q1 {
 
 
                 saveDiaryEntry(date, title, text);
+                return;
 
-                System.out.println("일기가 저장되었습니다.");
             } else {
                 System.out.println("ID 또는 비밀번호가 잘못되었습니다. 다시 시도하세요.");
             }
@@ -49,6 +49,8 @@ public class Q1 {
             System.out.println("파일을 저장하는 중에 오류가 발생했습니다.");
             e.printStackTrace();
         }
+
+        System.out.println("일기가 저장되었습니다.: "+date+".txt");
     }
 }
 
