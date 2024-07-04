@@ -8,7 +8,7 @@ public class Q1 {
 
         numbers.stream().distinct().forEach(System.out::println);
 
-        List<String> strings = Arrays.asList("apple","good","ice","melon");
+        List<String> strings = Arrays.asList("apple","good","grape","ice","melon");
 
         List<String> str = strings.stream()
                 .filter(string -> string.length() >= 5)
