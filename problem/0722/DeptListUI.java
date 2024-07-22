@@ -7,7 +7,7 @@ public class DeptListUI {
         DeptDAO deptDAO = new DeptDAO();
         ArrayList<com.multi.q1.DeptVO> list = deptDAO.list();
 
-        for(com.multi.q1.DeptVO vo : list) {
+        for(DeptVO vo : list) {
             System.out.println(vo);
             System.out.println("----------------------");
         }
