@@ -62,7 +62,7 @@ public class DeptDAO {
                 String Dname = rs.getString("dname");
                 String Loc = rs.getString("loc");
 
-                com.multi.q1.DeptVO deptVO = new com.multi.q1.DeptVO();
+                DeptVO deptVO = new DeptVO();
                 deptVO.setDeptNo(DeptNo);
                 deptVO.setDname(Dname);
                 deptVO.setLoc(Loc);
