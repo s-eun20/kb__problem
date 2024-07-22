@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 
 public class DeptDAO {
-    public com.multi.q1.DeptVO one(int deptNo) {
-        com.multi.q1.DeptVO deptVO= new com.multi.q1.DeptVO();
+    public DeptVO one(int deptNo) {
+        DeptVO deptVO= new DeptVO();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,8 +42,8 @@ public class DeptDAO {
         return deptVO;
     }
 
-    public ArrayList<com.multi.q1.DeptVO> list() {
-        ArrayList<com.multi.q1.DeptVO> list = new ArrayList<>();
+    public ArrayList<DeptVO> list() {
+        ArrayList<DeptVO> list = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
